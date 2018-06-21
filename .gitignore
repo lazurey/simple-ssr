@@ -1,0 +1,12 @@
+.idea/
+.vscode/
+build/
+*.js
+*.js.map
+!vendor/**/*.js
+!assets/**/*.js
+node_modules/
+public/
+.DS_Store
+npm-debug.log
+logs/

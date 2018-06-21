@@ -1,0 +1,27 @@
+{
+  "name": "simple-ssr",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start:server": "ts-node ./app-server/index.tsx",
+    "lint": "tslint -c tslint.json --project tsconfig.json \"{app-}*/{,**/}{,**/}/*.ts{,x}\"",
+    "lint:fix": "tslint -c tslint.json --project tsconfig.json \"{app-}*/{,**/}{,**/}/*.ts{,x}\" --fix",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.3",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "typescript": "^2.9.2"
+  },
+  "devDependencies": {
+    "@types/express": "^4.16.0",
+    "@types/react": "^16.4.1",
+    "@types/react-dom": "^16.0.6",
+    "ts-node": "^6.1.2",
+    "tslint": "^5.10.0"
+  }
+}
