@@ -2,7 +2,10 @@ import * as React from 'react';
 
 const titleStyle = {
   fontSize: '30px',
-}
+  background: '#ffff00',
+  width: '100px',
+  height: '100px',
+};
 
 export class SayHi extends React.Component<any, any> {
   constructor(props: any) {
@@ -22,7 +25,7 @@ export class SayHi extends React.Component<any, any> {
       });
     }, 2000);
   }
-  
+
   render() {
     return (
       <div>

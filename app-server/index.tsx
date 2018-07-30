@@ -1,4 +1,5 @@
 import * as express from 'express';
+import * as path from 'path';
 import * as React from 'react';
 import {
   renderToStaticMarkup,
@@ -8,6 +9,8 @@ import { Html } from './Html';
 import { MySSRApp } from '../app-ui/MySSRApp';
 
 const app = express();
+
+app.use('/assets', express.static(path.resolve(__dirname, '../public')));
 
 app.use((_: any, res: express.Response) => {
   const ssrApp = renderToString(<MySSRApp />);

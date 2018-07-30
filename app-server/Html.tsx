@@ -18,6 +18,7 @@ export class Html extends React.Component<IHtmlProps, any> {
         </head>
         <body>
           <div dangerouslySetInnerHTML={{ __html: `<div id='app'>${this.props.bodyHtml}</div>` }} />
+          <script src='/assets/app.js' />
         </body>
       </html>
     );
