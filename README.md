@@ -6,3 +6,11 @@
 npm install
 npm run start:server
 ```
+
+**Step 2** Server & Client on same code
+
+```bash
+npm install
+npm run build:client
+npm run start:server
+```
