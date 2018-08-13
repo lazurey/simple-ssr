@@ -7,15 +7,28 @@ import {
 } from 'react-dom/server';
 import { Html } from './Html';
 import { MySSRApp } from '../app-ui/MySSRApp';
+import { fetchHackerNews } from '../app-ui/pages/fetch-data';
 
 const app = express();
 
 app.use('/assets', express.static(path.resolve(__dirname, '../public')));
 
 app.use((_: any, res: express.Response) => {
-  const ssrApp = renderToString(<MySSRApp />);
-  const appWithHtmlWrapper = renderToStaticMarkup(<Html bodyHtml={ ssrApp } />);
-  res.send(appWithHtmlWrapper).status(200);
+  fetchHackerNews('15365591')
+    .then(({ url, title }) => {
+      const initialState = {
+        store: {
+          url,
+          title,
+          meta: 'fetch from server side',
+        },
+      };
+
+      const ssrApp = renderToString(<MySSRApp store={initialState} />);
+
+      const appWithHtmlWrapper = renderToStaticMarkup(<Html bodyHtml={ssrApp} initialState={initialState} />);
+      res.send(appWithHtmlWrapper).status(200);
+    });
 });
 
 app.listen(4321, () => {
