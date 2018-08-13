@@ -3,12 +3,21 @@ import * as React from 'react';
 const titleStyle = {
   fontSize: '30px',
   background: '#ffff00',
-  width: '100px',
+  width: '200px',
   height: '100px',
+  padding: '10px',
 };
 
-export class SayHi extends React.Component<any, any> {
-  constructor(props: any) {
+interface ISayHi {
+  to: string;
+}
+
+interface ISayHiState {
+  showMsg: boolean;
+}
+
+export class SayHi extends React.Component<ISayHi, ISayHiState> {
+  constructor(props: ISayHi) {
     super(props);
     this.state = {
       showMsg: false,
@@ -23,14 +32,14 @@ export class SayHi extends React.Component<any, any> {
       this.setState({
         showMsg: false,
       });
-    }, 2000);
+    }, 5000);
   }
 
   render() {
     return (
       <div>
         <button onClick={this.say}>Say Hi!</button>
-        { this.state.showMsg && (<div style={titleStyle}>Hi</div>) }
+        { this.state.showMsg && (<div style={titleStyle}>Hi {this.props.to}</div>) }
       </div>
     )
   }

@@ -2,10 +2,12 @@ import * as React from 'react';
 
 interface IHtmlProps {
   bodyHtml: string;
+  initialState: any;
 }
 
 export class Html extends React.Component<IHtmlProps, any> {
   render() {
+    const { bodyHtml, initialState } = this.props;
     return (
       <html lang='en'>
         <head itemScope>
@@ -17,7 +19,8 @@ export class Html extends React.Component<IHtmlProps, any> {
           <meta httpEquiv='content-type' content='text/html;charset=UTF-8' />
         </head>
         <body>
-          <div dangerouslySetInnerHTML={{ __html: `<div id='app'>${this.props.bodyHtml}</div>` }} />
+          <div dangerouslySetInnerHTML={{ __html: `<div id='app'>${bodyHtml}</div>` }} />
+          <script dangerouslySetInnerHTML={{ __html: `window.__INITIAL_STATE__=${JSON.stringify(initialState)}` }} />
           <script src='/assets/app.js' />
         </body>
       </html>

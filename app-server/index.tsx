@@ -13,8 +13,16 @@ const app = express();
 app.use('/assets', express.static(path.resolve(__dirname, '../public')));
 
 app.use((_: any, res: express.Response) => {
-  const ssrApp = renderToString(<MySSRApp />);
-  const appWithHtmlWrapper = renderToStaticMarkup(<Html bodyHtml={ ssrApp } />);
+  const initialState = {
+    store: {
+      username: 'Kitty',
+      meta: 'inject from server',
+    },
+  };
+
+  const ssrApp = renderToString(<MySSRApp store={initialState} />);
+
+  const appWithHtmlWrapper = renderToStaticMarkup(<Html bodyHtml={ssrApp} initialState={initialState} />);
   res.send(appWithHtmlWrapper).status(200);
 });
 
